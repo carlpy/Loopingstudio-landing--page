@@ -1,0 +1,108 @@
+@use '../0-helpers/variables' as var;
+@use '../0-helpers/mixin' as mix;
+
+main {
+    section {
+        width: 90%;
+        max-width: var.$max-width;
+        margin: 5rem auto;
+        position: relative;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            filter: brightness(70%);
+        }
+
+        .leader-vr__info {
+            text-align: center;
+
+            h1 { 
+                @include mix.titleStyle(2rem);
+                margin: 2rem 0 1.5rem 0;
+                text-align: center;
+            }
+
+            p {
+                color: var.$Dark-Gray;
+                line-height: 1.85;
+            }
+        }
+
+        .creations___title {
+            h2 { @include mix.titleStyle(2rem); text-align: center; margin: 0 0 2rem 0}
+            button { @include mix.buttonStyle; display: none; }
+        }
+
+        .creations___grid {
+            display: grid;
+            gap: 1.5rem;
+
+            div {
+                position: relative;
+
+                p {
+                    @include mix.titleStyle(1.7rem);
+                    bottom: 1rem;
+                    color: var.$White;
+                    left: .6rem;
+                    position: absolute;
+                }
+            }
+
+            button {
+                @include mix.buttonStyle;
+                margin: 1.5rem auto;
+                width: 12.5rem;
+            }
+        }
+
+        @media only screen and (min-width: var.$standard-query) {
+            &:first-child {
+                align-items: center;
+                display: flex;
+                justify-content: space-between;
+
+                .leader-vr__img {
+                    flex-basis: 60%;
+                }
+
+                .leader-vr__info {
+                    background-color: var.$White;
+                    bottom: 0;
+                    position: absolute;
+                    right: 0;
+                    padding: 0 2rem;
+                    width: 50%;
+                    * {text-align: left;}
+                }
+            }
+
+            .creations___title {
+                align-items: center;
+                display: flex;
+                justify-content: space-between;
+                margin: 0 0 2rem 0;
+                
+                h2 { margin: 0;}
+                button { display: block; }
+            }
+
+            .creations___grid {
+                grid-template-columns: repeat(4,1fr);
+                button { display: none; }
+            }
+        }
+        
+        @media only screen and (min-width: 950px) {
+            &:first-child {
+                .leader-vr__info {
+                    padding: 3rem 0 0 7rem;
+                    width: 49%;
+
+                    h1 { font-size: 2.9rem;}
+                }
+            }
+        } 
+    }
+}

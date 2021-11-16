@@ -1,0 +1,101 @@
+@use '../0-helpers/variables' as var;
+
+header {
+    background: url("../../images/mobile/image-hero.jpg") no-repeat top/cover;
+    height: 70vh;
+    overflow: hidden;
+    position: relative;
+    
+    .header__container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin: 0 auto;
+        max-width: var.$max-width;
+        width: 90%;
+    }
+
+    nav { 
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        margin: 0 auto;
+        padding: 2.5rem 0 0 0;
+        width: 100%;
+
+        .header__burger { width: 2rem; height: auto; z-index: 20; transition: transform .7s;}
+        .header__logo { z-index: 20; img { width: 11.5rem; height: auto;} }
+
+        .header__menu-desktop { 
+            color: var.$White;
+            display: none;
+            flex: .7;
+            justify-content: space-between;
+
+            li {
+                cursor: pointer;
+                font-size: 1.15rem;
+                position: relative;     
+            }
+
+            li::after {
+                background-color: var.$White;
+                bottom: -7px;
+                content: '';
+                height: 1.5px;
+                left: 0;
+                position: absolute;
+                transform: scale(0);
+                transition: transform 1s;
+                width: 100%;
+            }
+            
+            li:hover::after { transform: scale(1); }
+        }
+    }
+
+    .header__hero-title {
+        border: 1.5px solid var.$White;
+        color: var.$White;
+        font-family: var.$Family-Josefina;
+        font-size: 2.5em;
+        margin: auto; // in desktop device change to 0 margin
+        width: 100%;
+        line-height: 1.1;
+        max-width: 28rem;
+        padding: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .header__menu-mobile {
+        background-color: #000000;
+        color: white;
+        height: 80vh;
+        left: 0;
+        top: 0;
+        position: absolute;
+        padding: 10rem 5% 0 5%;
+        transform: translate(100%);
+        transition: .7s;
+        width: 100%;
+        
+        ul li {
+            font-family: var.$Family-Josefina;
+            font-size: 1.7rem;
+            padding: 1rem 0;
+            text-transform: uppercase;
+        }
+    }
+
+    .show__menu-mobile { transform: translate(0%); }
+    .rotate-burger { transform: rotate(90deg); }
+
+    @media only screen and (min-width: var.$standard-query) {
+        & { background: linear-gradient( #3131319d, #3131319d), url("../../images/desktop/image-hero.jpg") no-repeat top/cover;}
+        nav .header__menu-desktop { display: flex; }
+
+        .header__burger { display: none; }
+        .header__hero-title { margin: auto 0; font-size: 3rem;}
+        .header__menu-mobile { display: none;}
+    }
+}

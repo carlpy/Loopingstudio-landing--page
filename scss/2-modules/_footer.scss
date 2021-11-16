@@ -1,0 +1,72 @@
+@use '../0-helpers/variables' as var;
+@use '../0-helpers/mixin' as mix;
+
+footer {
+    background-color: var.$Black;
+    color: var.$White;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding: 3rem 0;
+    text-align:center;
+
+    .footer__img { 
+        img {
+            display: block;
+            height: auto;
+            width: 11.5rem;
+        }
+    }
+
+    ul { margin: 2rem 0; li { margin: 0 0 1rem 0; } }
+
+    .footer___social-md___icons {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 1.8rem auto;
+        width: 45%;
+    }
+
+    .footer___social-md___rights { color: var.$Dark-Gray; }
+
+    @media only screen and (min-width: var.$standard-query) {
+        & {
+            
+            .footer__container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 0 auto;
+                max-width: 1300px;
+                width: 90%;
+            }
+
+            .footer___menu {
+                flex: .5;
+                max-width: 400px;
+
+                ul {
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .footer__img { img { margin: 0 auto 0 0; } }
+            }
+
+            .footer___social-md___icons {
+                width: 75%;
+            }
+        }
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    a { color: hsl(228, 45%, 44%); }
+}
